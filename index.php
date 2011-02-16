@@ -8,7 +8,7 @@ $localfile = 'stats_cache.txt'; //make sure to create this file in local directo
 
 //if older than 24 hours, download fresh stats
 if ((!file_exists($localfile)) || (time()-filemtime($localfile)>$cache)) {
-	$user_getinfo_xml = file_get_contents('http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=$username&api_key=$api_key');
+	$user_getinfo_xml = file_get_contents("http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=$username&api_key=$api_key");
 	$fp = fopen($localfile, "w");
 	fwrite($fp, $user_getinfo_xml);
 	fclose($fp);
